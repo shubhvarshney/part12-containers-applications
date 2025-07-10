@@ -1,0 +1,15 @@
+services:
+  app:
+    image: todo-frontend-dev
+    build:
+      context: ./todo-frontend
+      dockerfile: ./todo-frontend/dev.Dockerfile
+    volumes:
+      - ./todo-frontend:/usr/src/app
+    ports:
+      - 5173:5173
+    environment:
+      - VITE_BACKEND_URL=http://localhost:3000
+    container_name: todo-frontend-dev
+  debug-helper:
+    image: busybox
